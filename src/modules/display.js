@@ -33,6 +33,8 @@ const display = async () => {
     `;
     section.appendChild(div);
   });
+  const Films = document.querySelector('.Films');
+  Films.innerHTML = `Films (${section.childElementCount})`;
 };
 
 export default display;
