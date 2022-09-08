@@ -23,15 +23,18 @@ const display = async () => {
     <img src="${item.image.medium}" alt="${item.name}">
     <div class="item-header">
       <h3>${item.name}</h3>
-      <span class="heart" style="font-size:200%; cursor:pointer;">&hearts;</span>
-    </div>
-    <div class="likes">
+      <span class="heart" style="font-size:100%; cursor:pointer;"><i class="fas fa-heart"></i></span>
+      <div class="likes">
       <span class="num">0</span> <span>likes</span>
     </div>
+    </div>
+    
     <button type="button" class="btn btn-primary btn-sm commentBtn">Comments</button><br>
     `;
     section.appendChild(div);
   });
+  const Films = document.querySelector('.Films');
+  Films.innerHTML = `Films (${section.childElementCount})`;
 };
 
 export default display;

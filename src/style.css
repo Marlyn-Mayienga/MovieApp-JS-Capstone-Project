@@ -85,3 +85,100 @@ footer {
 .item {
   padding: 10px;
 }
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeBtn {
+  font-size: xx-large;
+  margin: 1%;
+  padding: 0.5%;
+}
+
+.mod {
+  position: fixed;
+  z-index: 100;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #e2cfd2;
+  color: #e2cfd2;
+  height: 90vh;
+  top: 5vh;
+  bottom: 5vh;
+  left: 10vw;
+  right: 10vw;
+  min-width: 750px;
+  background: #562e11;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: auto;
+  display: none;
+}
+
+.mod img {
+  display: flex;
+  height: 80vh;
+  width: auto;
+  flex-shrink: 0;
+  margin: 5vh 20px;
+  border-radius: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: flex;
+}
+
+.activate-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.7;
+  z-index: 25;
+}
+
+.img-info-container {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+}
+
+.data {
+  display: flex;
+  justify-content: center;
+  gap: 7%;
+}
+
+.comment-list {
+  text-align: center;
+}
+
+.add-comment {
+  text-align: center;
+}
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.username,
+.comment {
+  height: 50px;
+  margin-top: 5%;
+  font-size: 20px;
+  outline: none;
+}
+
+.submitBtn {
+  align-self: flex-end;
+  margin-top: 5%;
+  width: 30%;
+}

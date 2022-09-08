@@ -7,3 +7,7 @@ setTimeout(() => {
   likes.displayLikes();
   likes.avtivateLikeBtns();
 }, 1000);
+
+import commentPopups from './modules/COMMENT.js';
+commentPopups();
+
