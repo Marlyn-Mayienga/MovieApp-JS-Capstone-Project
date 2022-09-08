@@ -164,7 +164,7 @@ footer {
   text-align: center;
 }
 
-form {
+.commentForm {
   display: flex;
   flex-direction: column;
 }
