@@ -1,4 +1,4 @@
-// import './style.css';
+import './style.css';
 import display from './modules/display.js';
 import likes from './modules/likes.js';
 

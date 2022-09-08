@@ -260,7 +260,6 @@
     "html-entities": "^2.3.3",
     "html-minifier-terser": "^6.1.0",
     "html-tags": "^3.2.0",
-    "html-webpack-plugin": "^5.5.0",
     "htmlparser2": "^6.1.0",
     "http-cache-semantics": "^4.1.0",
     "http-deceiver": "^1.2.7",
@@ -701,6 +700,7 @@
     "@babel/core": "^7.19.0",
     "@babel/preset-env": "^7.19.0",
     "babel-jest": "^29.0.2",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^29.0.2",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
