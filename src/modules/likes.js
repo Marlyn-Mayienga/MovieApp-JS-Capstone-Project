@@ -2,7 +2,7 @@ import display from './display.js';
 
 class Likes {
   constructor() {
-    this.URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/XlKobHfajRmGKH27GzKm/likes';
+    this.URL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/UMc7L9k7LNIsae8S9uHs/likes';
   }
 
   async getLikes() {
