@@ -21,7 +21,7 @@
 
 ## Screenshots
 
-![image](https://user-images.githubusercontent.com/32592856/189337954-d1c76306-9c35-49c0-95d2-a832c5767a63.png)
+![image](https://user-images.githubusercontent.com/32592856/189342463-6280d8e9-3a52-4195-9b10-bf769235bc4a.png)
 ![image](https://user-images.githubusercontent.com/32592856/189338210-701edbed-6946-4b64-a8ef-497a6d2a81a4.png)
 ![image](https://user-images.githubusercontent.com/32592856/189338607-0c5db690-a67f-4724-aa0e-65ffa9733813.png)
 ### Setup
