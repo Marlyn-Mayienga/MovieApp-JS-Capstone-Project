@@ -700,6 +700,7 @@
     "@babel/core": "^7.19.0",
     "@babel/preset-env": "^7.19.0",
     "babel-jest": "^29.0.2",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.0.2",
     "webpack": "^5.74.0",
@@ -712,7 +713,8 @@
     "prod": "NODE_ENV=production webpack",
     "dev": "webpack",
     "build": "webpack",
-    "webhint": "hint"
+    "webhint": "hint",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
