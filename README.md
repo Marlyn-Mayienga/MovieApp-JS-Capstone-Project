@@ -32,10 +32,10 @@ If you installed git you can clone the code to your machine, or download a ZIP o
 
 Download the ZIP from this location, or run the following git command to clone the files to your machine:
 
-`git clone git@github.com:Marlyn-Mayienga/MovieApp-JS-Capstone-Project.git `
-- Once the files are on your machine, open the Movie-App folder in Visual Studio Code.
-- With the files open in Visual Studio Code,launch the files with Live Server.
-- You can also directly open the HTML in the "dist" directory.
+- clone your project using `git clone git@github.com:Marlyn-Mayienga/MovieApp-JS-Capstone-Project.git `
+- cd into the project folder `cd MovieApp-JS-Capstone-Project`
+- run `npm install`
+- run `npm start`
 
 ## Authors
 
