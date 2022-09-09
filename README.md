@@ -13,7 +13,7 @@
 - Using Gitflow
 
 ### The description of this project is here in  the video below.
-[Click here for video description](https://marlyn-mayienga.github.io/MovieApp-JS-Capstone-Project/)
+[Click here for video description](https://drive.google.com/drive/folders/1pcUnu8eQnVuAZ2PUaKf0WGkLrujo9S6E?usp=sharing)
 
 ## Live Demo 
 [Live Demo Link](https://marlyn-mayienga.github.io/MovieApp-JS-Capstone-Project/)
