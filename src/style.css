@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: bisque;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+header {
+  width: 100%;
+  background-color: #ab9e13;
+  font-size: 14px;
+  padding: 2% 0;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  color: #9d1818;
+  font-size: 2vw;
+}
+
+h2 {
+  text-align: left;
+  padding: 2%;
+  font-size: 40px;
+  color: #f55531;
+}
+
+footer {
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 3px;
+}
+
+.like {
+  color: red;
+  font-size: 200%;
+  cursor: pointer;
+}
+
+.movie-container {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5%;
+}
+
+.movies {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 1fr);
+  gap: 3%;
+}
+
+.filmBoxing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.filmTitle,
+.like,
+.likes {
+  margin-top: -7%;
+}
+
+.comment-btn {
+  margin-top: -7%;
+  align-self: flex-end;
+}
+
+.innerContent {
+  position: fixed;
+  display: block;
+  top: 7vh;
+  bottom: 3vh;
+  left: 10vw;
+  right: 3vw;
+  padding: 2%;
+  background: #562e11;
+  flex-direction: column;
+  border-radius: 15px;
+  color: #dfdfdf;
+  height: 80vh;
+  width: 80%;
+  z-index: 30;
+  overflow-y: scroll;
+}
+
+.innerContent img {
+  display: flex;
+  height: 60vh;
+  width: auto;
+  flex-shrink: 0;
+  margin: 5vh 20px;
+  border-radius: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.commentPop {
+  display: none;
+}
+
+.greyblackScreen {
+  display: none;
+  position: fixed;
+  background: rgba(6, 1, 1, 0.53);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 4;
+}
+
+.Xmark {
+  font-size: xx-large;
+  margin: 1%;
+  padding: 0.2% 0.2%;
+}
+
+.img-info-container {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+}
+
+.data {
+  display: flex;
+  justify-content: center;
+  gap: 7%;
+}
+
+.comment-list {
+  text-align: center;
+}
+
+.add-comment {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+#user_name,
+#user_comment {
+  height: 50px;
+  margin-top: 5%;
+  font-size: 20px;
+  outline: none;
+}
+
+#submitBtn {
+  align-self: flex-end;
+  margin-top: 5%;
+  width: 30%;
+}
