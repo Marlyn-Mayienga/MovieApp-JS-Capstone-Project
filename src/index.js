@@ -1,12 +1,6 @@
 import './style.css';
-import display from './modules/display.js';
-import likes from './modules/likes.js';
-
+import showFilm from './modules/pageAndLikes.js';
 import commentPopups from './modules/COMMENT.js';
 
-display();
-setTimeout(() => {
-  likes.displayLikes();
-  likes.avtivateLikeBtns();
-}, 1000);
+showFilm();
 commentPopups();

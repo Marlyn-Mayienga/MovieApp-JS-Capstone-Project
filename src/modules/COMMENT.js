@@ -1,4 +1,4 @@
-import display from './display.js';
+import display from './pageAndLikes.js';
 
 let list = [];
 const getData = async () => {
@@ -14,18 +14,19 @@ const commentPopups = async () => {
   await getData();
   await display();
   const popupContent = document.querySelector('.commentPop');
-  const commentBtns = document.querySelectorAll('.commentBtn');
-  const greypopup = document.querySelector('.popup');
+  const commentBtns = document.querySelectorAll('.comment-btn');
+  const greyScreen = document.querySelector('.greyblackScreen');
 
   commentBtns.forEach((btn, id) => {
     btn.addEventListener('click', () => {
-      greypopup.classList.add('activate-popup');
-      document.body.style.overflow = 'hidden';
+      greyScreen.classList.add('greyblackScreen');
+      greyScreen.style.display = 'block';
+      popupContent.style.display = 'block';
 
       popupContent.innerHTML = `
-          <div class="mod active">
+          <div class="innerContent">
           <div class="button-container"> 
-          <button type="button" class="closeBtn" >&#10008;</button></div>
+          <button type="button" class="Xmark" >&#10008;</button></div>
           <div class="img-info-container">
            <div class="img-container"><img src="${list[id].image.original}" alt=""/></div>
            <div class="info"> 
@@ -40,119 +41,101 @@ const commentPopups = async () => {
                   <p>Rating : ${list[id].rating.average}</p>
                 </div>
               </div>
-  
              <div>
-                <h2 class="comment-list">Comments</h2>
+                <h2 class="comment-list">Comments <span class="count"></span> </h2>
                 <div class="allComments"></div>
               </div>
-  
                 <h2 class="add-comment">Add comment</h2>
-                <div class="commentForm">
-                <input type="text" class="username" placeholder="Your name"/>
-                <input type="textarea" class="comment" placeholder="Add Your comment"/>
-                <button type="submit" class="submitBtn">Submit</button>
-                </div>
+                <form class="form1" id="${id}"  action="#"> 
+                <input  id="user_name"  type="text" required placeholder=" Your Name">   
+                <textarea id="user_comment" required  placeholder=" Kindly add a comment..." ></textarea>
+                 <button type="submit"> Comment </button> 
+                 </form> 
                 </div>
             </div>
       </div>
         `;
 
-      const closeButtons = document.querySelectorAll('.closeBtn');
-      const removebtn = document.querySelectorAll('.mod');
-
-      closeButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          removebtn.forEach((btn) => {
-            btn.classList.remove('active');
-          });
-          document.body.style.overflow = 'auto';
-          greypopup.classList.remove('activate-popup');
+      const Xmark = document.querySelectorAll('.Xmark');
+      Xmark.forEach((X) => {
+        X.addEventListener('click', () => {
+          popupContent.style.display = 'none';
+          greyScreen.classList.remove('greyblackScreen');
+          greyScreen.style.display = 'none';
         });
       });
 
-      const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/';
-      const key = '2yjaO516ihOM58A91oBf';
-      const submitBtn = document.querySelector('.submitBtn');
-      submitBtn.addEventListener('click', () => {
-        // eslint-disable-next-line camelcase
-        const item_id = id;
-        const usernameInput = document.querySelector('.username');
-        const commentInput = document.querySelector('.comment');
-        const username = usernameInput.value;
-        const comment = commentInput.value;
-        const dataToSend = JSON.stringify({ item_id, username, comment });
-        async function postData(url = '', data = {}) {
-          const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-              'Content-type': 'application/json; charset=UTF-8',
-            },
-            body: data,
-          });
-          /* eslint-disable */
-          getcommentData();
-          const count = document.querySelectorAll('.left');
-          const total = count.length;
-          const counter = document.querySelector('.comment-list');
-          counter.innerHTML = `Comments (${total + 1})`;
-          return response;
+      const form = document.querySelector('form');
+      const formId = form.getAttribute('id');
+
+      /* eslint-disable */ 
+      getComment(`'${formId}'`);
+
+      form.addEventListener('submit', (e) => {
+        /* eslint-disable */ 
+        const userName = document.getElementById('user_name').value;
+        const user_comment = document.getElementById('user_comment').value;
+        postComment(`'${formId}'`, `${userName}`, `'${user_comment}'`);
+
+        const commentData = document.querySelector('.allComments');
+        const eachComment = document.createElement('p');
+        eachComment.classList.add('eachComment');
+
+        function convertDate(date) {
+          const dd = date.getDate().toString();
+          const mm = (date.getMonth() + 1).toString();
+          const yyyy = date.getFullYear().toString();
+          const ddChars = dd.split('');
+          const mmChars = mm.split('');
+          return `${yyyy}-${mmChars[1] ? mm : `0${mmChars[0]}`}-${ddChars[1] ? dd : `0${ddChars[0]}`}`;
         }
+        /* eslint-disable */ 
+        const todaysDate = new Date();
+        const currentDate = convertDate(todaysDate);
+        eachComment.innerText = `${currentDate} - ${userName} : ${user_comment}`;
+        commentData.appendChild(eachComment);
 
-        postData(`${url}${key}/comments`, dataToSend)
-          .then((json) => {
-            // eslint-disable-next-line no-unused-expressions
-            json;
-          })
-          .catch((err) => {
-            // eslint-disable-next-line no-unused-expressions
-            err;
-          });
-        usernameInput.value = '';
-        commentInput.value = '';
+        const allComments = document.getElementsByClassName('eachComment');
+        const count = allComments.length;
+        const countComments = document.getElementsByClassName('count');
+        countComments[0].innerText = `(${count})`;
+
+        document.getElementById('user_name').value = '';
+        document.getElementById('user_comment').value = '';
+        e.preventDefault();
       });
-
-      async function getData(url = '') {
-        const response = await fetch(url, {
-          method: 'GET',
-          mode: 'cors',
-          cache: 'no-cache',
-          credentials: 'same-origin',
-          redirect: 'follow',
-          referrerPolicy: 'no-referrer',
-        });
-        return response;
-      }
-      const allComments = document.querySelector('.allComments');
-
-      const getcommentData = () => {
-        getData(`${url}${key}/comments?item_id=${id}`).then(async (res) => {
-          const array = await res.json();
-          return array;
-        })
-          .then((array) => {
-            if (array.length > 0) {
-              const getting = array
-                .map((items) => `
-                  <div class="left">
-                    <p class="eachScore">${items.creation_date} <span>${items.username}:</span>
-                    <span class="numberSc">${items.comment}</span></p>
-                  </div>`)
-                .join(' ');
-              allComments.innerHTML = getting;
-            // eslint-disable-next-line no-empty
-            } else {
-            }
-          });
-      };
-      getcommentData();
-
-      setTimeout(() => {
-        const count = document.querySelectorAll('.left');
-        const total = count.length;
-        const counter = document.querySelector('.comment-list');
-        counter.innerHTML = `Comments (${total})`;
-      }, 2000);
     });
+
+    const postComment = (itemId, username, comment) => {
+      fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/2yjaO516ihOM58A91oBf/comments', {
+        method: 'POST',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({ item_id: itemId, username, comment }),
+      })
+        .then((res) => res.ok)
+        .then((data) => (data));
+    };
+
+    const APIurl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps';
+    const appKey = '2yjaO516ihOM58A91oBf';
+
+    const getComment = (itemId) => {
+      fetch(`${APIurl}/${appKey}/comments?item_id=${itemId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          for (let i = 0; i < data.length; i += 1) {
+            const commentData = document.querySelector('.allComments');
+            const eachComment = document.createElement('p');
+            eachComment.classList.add('eachComment');
+            eachComment.innerText = `${data[i].creation_date} - ${data[i].username} : ${data[i].comment}`;
+            commentData.appendChild(eachComment);
+          }
+          const allComments = document.getElementsByClassName('eachComment');
+          const count = allComments.length;
+          const countComments = document.getElementsByClassName('count');
+          countComments[0].innerText = `(${count})`;
+        });
+    };
   });
 };
 
